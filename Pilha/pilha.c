@@ -37,17 +37,15 @@ int desempilhar(Pilha p){
     return 1;
 } 
 
-Pilha copiar(Pilha p){
-    if(p->topo ==0){
-        return 0;
-    }
-    criar(Pilha p2);
-    for(int i = 0; i < p->topo; i++){
-        empilhar(p2, p->dados[i]);
-        return 1;
-    }
-    
+Pilha copiar_pilha(Pilha p) {
+    Pilha p_aux = criar();
 
+    while(acessar_topo(p)){
+        int valor = acessar_topo(p);
+        desempilhar(p);
+        empilhar(p_aux, valor);
+    }
+   
 // free
 void destruir(Pilha p) {
     if(p != NULL)
