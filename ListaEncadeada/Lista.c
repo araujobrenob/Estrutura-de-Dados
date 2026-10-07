@@ -53,4 +53,15 @@ int inserir_final(Lista li , int valor_inserido){
         }
 
      }
+
+void imprimir_lista(Lista li){
+    if(quantidadeDaLista(li) == 0){
+        return;
+    }
+    Elem* aux = acessar_inicio(li);
+    
+
+    
+
+}
 }
