@@ -1,6 +1,7 @@
 #include "musica.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct musica {
     char titulo[100];
@@ -35,7 +36,7 @@ int consulta_duracao(Musica m){
 
 void imprime_musica(Musica m){
     if (m == NULL) return;
-    printf("Titulo : %s Artista : %s  Duracao : %d:%02d\n", m->titulo , m->artista , m->duracao % 60);
+    printf("Titulo : %s Artista : %s  Duracao : %d:%02d\n", m->titulo , m->artista , m->duracao / 60 , m->duracao % 60);
 
 
 }

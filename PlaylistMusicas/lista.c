@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <lista.h>
+#include "lista.h"
 
 struct elem{
     Musica musica;
@@ -31,7 +31,7 @@ int insere_inicio(Lista li , Musica m){
     return 1;
 }
 int insere_posicao(Lista li , int pos , Musica m){
-    if(li == NULL || m == NULL || pos < 0 || pos >=li->qtd) return NULL;
+    if(li == NULL || m == NULL || pos < 0 || pos >li->qtd) return 0;
     if(pos == 0) return insere_inicio(li,m);
 
     Elem* ant = li->inicio;
@@ -95,7 +95,7 @@ int consulta_quantidade(Lista li){
 
 void libera_lista(Lista li){
     if(li == NULL) return;
-    ELem* p = li->inicio;
+    Elem* p = li->inicio;
     while (p != NULL){
         Elem* prox = p->prox;
         libera_musica(p->musica);
@@ -105,5 +105,5 @@ void libera_lista(Lista li){
     free(li);
 }
 
-}
+
 

@@ -10,9 +10,10 @@ void adiciona_musica(Lista playlist , Musica m){
 
 void adiciona_musica_posicao(Lista playlist , Musica m , int pos , int *proxima){
     if(insere_posicao(playlist , pos , m)){
-        if(pos < *proxima)
+        if(pos < *proxima){
             (*proxima)++;
-            printf("adicionada na posicao %d: %s\n" , pos , consulta_titulo(m));
+        }
+            
     }   else{
             printf("posicao %d invalida para adicionar" , pos);
     }
@@ -21,16 +22,17 @@ void adiciona_musica_posicao(Lista playlist , Musica m , int pos , int *proxima)
 void remove_musica(Lista playlist ,int pos , int *proxima){
     Musica m = remove_posicao(playlist , pos);
     if(m == NULL){
-        printf("posição %d invalida para remover" , pos);
+        printf("posicao %d invalida para remover" , pos);
         return;
     }
     if(pos < *proxima){
         (*proxima)--;
-        printf("removida da posicao %d : %s\n" , pos ,consulta_titulo(m));
-        libera_musica(m);
     }      
+     printf("removida da posicao %d : %s\n" , pos ,consulta_titulo(m));
+        libera_musica(m);
 }
-int tempo_restante(Lista playlist , int *proxima){
+
+int tempo_restante(Lista playlist , int proxima){
     int total = 0;
     for(int i = proxima ; i < consulta_quantidade(playlist) ; i++){
         total += consulta_duracao(consulta_posicao(playlist , i));
